@@ -5,3 +5,5 @@ from django.forms import ModelForm
 
 class NeighborhoodForm(ModelForm):
   class Meta:
+        model = Neighborhood
+        fields= ('neighborhood_name',)
