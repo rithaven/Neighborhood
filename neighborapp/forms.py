@@ -15,3 +15,7 @@ class PostForm(ModelForm):
       class Meta:
         model =Post
         fields= ('title','post_description',)
+class AddBusinessForm(ModelForm):
+      class Meta:
+            model = Post
+            fields= ('title','post_description',)
