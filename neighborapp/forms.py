@@ -8,4 +8,6 @@ class NeighborhoodForm(ModelForm):
         model = Neighborhood
         fields= ('neighborhood_name',)
 class UpdateProfileForm(ModelForm):
-  
+     class Meta:
+          model = Neighborhood
+          fields= ('first_name','last_name','location')
