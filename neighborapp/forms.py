@@ -4,3 +4,4 @@ from django.forms import ModelForm
 
 
 class NeighborhoodForm(ModelForm):
+  class Meta:
