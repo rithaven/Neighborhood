@@ -11,3 +11,7 @@ class UpdateProfileForm(ModelForm):
      class Meta:
           model = Neighborhood
           fields= ('first_name','last_name','location')
+class PostForm(ModelForm):
+      class Meta:
+        model =Post
+        fields= ('title','post_description',)
