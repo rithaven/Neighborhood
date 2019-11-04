@@ -111,3 +111,5 @@ def search(request):
         return rende(request,'search.html',{'searched_business':searched_business})
     except (valueError,Business.DoesnotExist):
         message= "we couldn't find the business you're looking for!"
+        return render(request,'search.html',{'message':message})
+    return render(request,'search.html',{'message':message,'searched_business': searched_business})
