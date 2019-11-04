@@ -75,4 +75,39 @@ def profile(request,user_id):
         return redirect(reverse'profile',args=[user.id])
     else:
          form: UpdateProfileForm(instance=profile)
-         
+    businesses= Business.objects.filter(b_owner=user).all()
+    emergencies = Contacts.objects.filter(neighborhood_contact=profile.neighborhood).all()
+    neighborhoods=Neighborhood.objects.all()
+
+    return render(request,'profile.html',{'neighborhoods':neighborhoods,'businesses':businesses,'profile':profile,'form':form,'emergencies':emergencies})
+
+
+def add_business(request):
+   user= User.objects.filter(id=request.user.id).first()
+   profile= UserProfile.objects.filter(user=user).first()
+   if request.method== 'POST':
+     business_form=AddBusinessForm(request.POST)
+     if business_form.is_valid():
+         business=Business(name= request.POST['name'],b_owner=user,business_neighborhood=profile.neighborhood,email=request.Post['email'])
+         business.save()
+      return redirect(reverse('profile',args=[user.id]))
+   else:
+        business_form=AddBusinessForm()
+   return redirect(request,'biziness.html',{'business_form':business_form})
+
+def change_neighborhood(request,neighborhood_id):
+  profile= UserProfile.objects.filter(user=request.user).first()
+  neighborhood = Neighborhood.objects.get(id=neighborhood_id)
+  profile.neighborhood=neighborhood
+  profile.save()
+  return redirect(reverse('neighborhood',args=[neighborhood.id]))
+
+
+def search(request):
+    try:
+      if 'business' in request.GET and request.GET ['business']:
+        search_term = request.GET.get('business')
+        searched_business = business.objects.get(name_icontains=search_term)
+        return rende(request,'search.html',{'searched_business':searched_business})
+    except (valueError,Business.DoesnotExist):
+        message= "we couldn't find the business you're looking for!"
