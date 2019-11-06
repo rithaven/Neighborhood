@@ -13,13 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import url, include
+from django.contrib.auth import views 
+from django.contrib.auth import views as auth_views
+from django_registration.backends.one_step.views import RegistrationView
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('neighborapp.uls')),
+    url(r'^admin/', admin.site.urls,name='admin'), 
+    url(r'',include('neighborapp.urls')),
+    url(r'^accounts/register/',RegistrationView.as_view(success_url='/accounts/login/'),name='django_registration_register'), 
+    url(r'^accounts/', include('django_registration.backends.one_step.urls')),  
+    url(r'^logout/$', views.logout, {"next_page": '/'}), 
     url(r'accounts/',include('django.contrib.auth.urls')),
-    url(r'accounts/',include('django_registration.backends.one_step.urls')),
-    url('tinymce/',include('tinymce.urls'))
+    url(r'^tinymce/', include('tinymce.urls')), 
+   
 ]

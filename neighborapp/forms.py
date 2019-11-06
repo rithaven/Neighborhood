@@ -9,13 +9,13 @@ class NeighborhoodForm(ModelForm):
         fields= ('neighborhood_name',)
 class UpdateProfileForm(ModelForm):
      class Meta:
-          model = Neighborhood
+          model = UserProfile
           fields= ('first_name','last_name','location')
 class PostForm(ModelForm):
       class Meta:
         model =Post
-        fields= ('title','post_description',)
+        fields= ('title','description',)
 class AddBusinessForm(ModelForm):
       class Meta:
-            model = Post
-            fields= ('title','post_description',)
+            model = Business
+            fields= ('name','email', 'B_location')

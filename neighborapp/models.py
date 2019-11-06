@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from tinymce.models import HTMLField
 
+
 # Create your models here.
 class Neighborhood(models.Model):
       neighborhood_name = models.CharField(max_length=30)
@@ -29,6 +30,7 @@ class UserProfile(models.Model):
       last_name = models.CharField(max_length=20, blank=True)
       user= models.ForeignKey(User,on_delete= models.CASCADE)
       location= models.CharField(max_length=30, blank=True)
+      neighborhood= models.ForeignKey('Neighborhood',on_delete=models.CASCADE,null=True,blank=True)
 
       def assign_neighborhood(self,neighborhood):
           self.neighborhood = neighborhood

@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% block content%}
+{% if searched_business%}
+<h3 class="center-align">Found search result</h3>
+<div></div>
+<div class="row">
+  <div class="col s3 m3 14 x14"></div>
+  <div class="col s6 m6 14 x14">
+    <div class="card">
+      <div class="card-content">
+        <h4 class="center-align">{{searched_business%</h4>
+          <ul>
+            <li><h6>Owner:{{ searched_business.owner.username}}</h6></li>
+            <li><h6>Email:{{searched_business.email}}</h6></li>
+            <li><h6>Located At: {{searched_business.b_location}}</h6></li>
+            <li><h6>Neighborhood:{{searched_business.b_neighborhood}}</h6></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col s3 m3 14 x14"></div>
+  <h4 class="center-align"><i style="font-size:100px;" class="material-icons">very_dissatisfied</i></h4>
+  <h3 class="center-align">{{message}}</h3>
+  {% endif %}
+
+  {% for emergency in emergencies%}
+  <li>
+    <ul>
+      <li>
+        <h6>{{emergency.name}}</h6>
+      </li>
+      <li>Phone:{{emergency.contacts}}</li>
+      <li>Email: {{emergency.email}}</li>
+    </ul>
+  </li>
+  {% endif%}
+</ul>
+</div>
+<div class="modal-footer">
+  <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+</div>
+{% endblock%}
