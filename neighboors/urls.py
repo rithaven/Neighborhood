@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.contrib.auth import views 
-from django.contrib.auth import views as auth_views
+# from django.contrib.auth import views as auth_views
 from django_registration.backends.one_step.views import RegistrationView
 
 
@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^accounts/', include('django_registration.backends.one_step.urls')),  
     url(r'^logout/$', views.logout, {"next_page": '/'}), 
     url(r'accounts/',include('django.contrib.auth.urls')),
-    url(r'^tinymce/', include('tinymce.urls')), 
+    url(r'^tinymce/', include('tinymce.urls')),
    
 ]

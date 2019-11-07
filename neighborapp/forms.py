@@ -13,8 +13,8 @@ class UpdateProfileForm(ModelForm):
           fields= ('first_name','last_name','location')
 class PostForm(ModelForm):
       class Meta:
-        model =Post
-        fields= ('title','description',)
+           model =Post
+           fields= ('title','description',)
 class AddBusinessForm(ModelForm):
       class Meta:
             model = Business

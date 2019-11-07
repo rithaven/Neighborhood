@@ -33,7 +33,7 @@ def home(request):
           if user.neighborhood is None:
                title='Neighborhood'
                neighbors= Neighborhood.objects.all()
-               return render(request,'Home.html',{'neighbors':neighbors})
+               return render(request,'home.html',{'neighbors':neighbors})
           else: 
               user= UserProfile.objects.filter(user= request.user).first()
               return redirect(reverse('neighborhood',args=[user.neighborhood.id]))
@@ -68,7 +68,7 @@ def neighborhood(request, neighborhood_id):
 
 def profile(request,user_id):
     user = User.objects.get(id= user_id)
-    profile = UserProfile.objects.filter(user=user).filter()
+    profile = UserProfile.objects.filter(user=user).first()
     if request.method =='Post':
         form =UpdateProfileForm(request.POST,instance=profile)
         if form.is_valid():
@@ -79,7 +79,7 @@ def profile(request,user_id):
         return redirect(reverse('profile',args=[user.id]))
     else:
         form = UpdateProfileForm(instance=profile)
-    businesses= Business.objects.filter(b_owner=user).all()
+    businesses= Business.objects.filter(BusinessOwner=user).all()
     emergencies = Contacts.objects.filter(neighborhood_contact=profile.neighborhood).all()
     neighborhoods=Neighborhood.objects.all()
 
@@ -93,7 +93,7 @@ def add_business(request):
    if request.method== 'POST':
      business_form=AddBusinessForm(request.POST)
      if business_form.is_valid():
-         business=Business(name= request.POST['name'],b_owner=user,business_neighborhood=profile.neighborhood,email=request.Post['email'])
+         business=Business(name= request.POST['name'],BusinessOwner=user,b_neighborhood=profile.neighborhood,email=request.Post['email'])
          business.save()
      return redirect(reverse('profile',args=[user.id]))
    else:
