@@ -7,6 +7,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 class Neighborhood(models.Model):
       neighborhood_name = models.CharField(max_length=30)
+      
       def Create_neighborhood(self):
         self.save()
 
@@ -51,6 +52,7 @@ class Business(models.Model):
 
     def create_business(self):
         self.save()
+
     def delete_business(self):
         self.delete()
 
@@ -58,6 +60,7 @@ class Business(models.Model):
     def find_business(cls,business_id):
         business =cls.objects.get(id=business_id)
         return business
+
     def update_business(self,name):
         self.name =name
         self.save()

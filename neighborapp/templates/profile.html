@@ -4,7 +4,7 @@
 <div class="container">
   {% if profile.first_name and profile.last_name %}
   <div class="section">
-    <a href="#modal3" data-target="modal3" class="modal-trigger btn-small" style="background-color:#ee6e73!important;">Change Neighborhood</a>
+    <a href="#modal3" data-target="modal3" class="modal-trigger btn-small" style="background-color:#6eeec3!important;">Change Neighborhood</a>
 
     <!-- Change Neighborhood Modal -->
     <div id="modal3" class="modal">
@@ -14,13 +14,13 @@
         {% for neighborhood in neighborhoods %}
         <div class="divider"></div>
         <div class="section">
-          <a href="{% url 'change_neighborhood' neighborhood.id %}" class="btn-floating" style="background-color:#ee6e73!important;"><i class="material-icons">check</i></a>
+          <a href="{% url 'change_neighborhood' neighborhood.id %}" class="btn-floating" style="background-color:#6edbee!important;"><i class="material-icons">check</i></a>
           <h5 class="center-align"><i class="material-icons">home</i>{{neighborhood.neighborhood_name}}</h5>
         </div>
         {% endfor %}
       </div>
       <div class="modal-footer">
-        <a class="modal-close btn-flat" style="color:#ee6e73;">Close</a>
+        <a class="modal-close btn-flat" style="color:#6eeea3;">Close</a>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
   </div>
   {% else %}
   <div class="section">
-    <a href="#" class="btn-small" style="background-color:#ee6e73!important;">Change Neighborhood</a>
+    <a href="#" class="btn-small" style="background-color:#6eeeb9!important;">Change Neighborhood</a>
     <h3 class="center-align">My Profile</h3>
   </div>
   {% endif %}
@@ -46,7 +46,7 @@
           <form action="{% url 'profile' profile.user.id%}" method="POST">
             {% csrf_token %}
             {% bootstrap_form form%}
-            <button class="btn" style="background-color:#ee6e73;" type="submit" name="action">Update</button>
+            <button class="btn" style="background-color:#6eeea3;" type="submit" name="action">Update</button>
           </form>
         </div>
       </div>
@@ -94,7 +94,7 @@
       </ul>
     </div>
     <div class="modal-footer">
-      <a class="modal-close btn-flat" style="color:#ee6e73;">Close</a>
+      <a class="modal-close btn-flat" style="color:#6eeeae;">Close</a>
     </div>
   </div>
 </div>
