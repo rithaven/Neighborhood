@@ -93,12 +93,12 @@ def add_business(request):
    if request.method== 'POST':
      business_form=AddBusinessForm(request.POST)
      if business_form.is_valid():
-         business=Business(name= request.POST['name'],BusinessOwner=user,b_neighborhood=profile.neighborhood,email=request.Post['email'])
+         business=Business(name= request.POST['name'],BusinessOwner=user,b_neighborhood=profile.neighborhood,email=request.POST['email'])
          business.save()
      return redirect(reverse('profile',args=[user.id]))
    else:
         business_form=AddBusinessForm()
-   return redirect(request,'biziness.html',{'business_form':business_form})
+   return render(request,'biziness.html',{'business_form':business_form})
    
 
 def change_neighborhood(request,neighborhood_id):
