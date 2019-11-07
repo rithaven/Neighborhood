@@ -1,9 +1,9 @@
 
 <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a class="brand-logo" href="{% url 'home'%}"><i class="material-icons">stars</i>Neighborhood</a>
-       
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="right" ></div>
+        <a class="brand-logo" href="{% url 'home'%}">Home</a>
+      
         <ul class="right hide-on-med-and-down">
           <!-- Users' Navbar -->
           {% if request.user.is_authenticated %}
