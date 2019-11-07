@@ -3,7 +3,7 @@
     <nav>
       <div class="nav-wrapper">
         <a class="brand-logo" href="{% url 'home'%}"><i class="material-icons">stars</i>Neighborhood</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+       
         <ul class="right hide-on-med-and-down">
           <!-- Users' Navbar -->
           {% if request.user.is_authenticated %}
@@ -14,7 +14,7 @@
                   <input style="color:#fff; border-bottom:1px solid white;" class="form-input inline mr-sm-2" type="text" placeholder="Search" aria-label="Search" name='business'>
                 </div>
                 <div class="col s4">
-                  <button type="submit" class="btn btn-small" style="color:#dd9a09; background-color:#fff; border:none; border-radius:10px;">Search</button>
+                  <button type="submit" class="btn btn-small" style="color:#09dd96; background-color:#fff; border:none; border-radius:10px;">Search</button>
                 </div>
               </div>
             </form>

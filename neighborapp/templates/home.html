@@ -26,7 +26,7 @@
         <form action="{% url 'home' %}" method="POST">
           {% csrf_token %}
           {% bootstrap_form form%}
-          <button class="btn" style="background-color:#ee6e73;" type="submit" name="action">Create</button>
+          <button class="btn" style="background-color:#6eeea3;" type="submit" name="action">Create</button>
         </form>
       </div>
     </div>
@@ -42,7 +42,7 @@
     {% for neighborhood in neighborhoods %}
     <div class="divider"></div>
     <div class="section">
-      <a href="{% url 'neighborhood' neighborhood.id %}" class="btn-floating" style="background-color:#ee6e73!important;"><i class="material-icons">check</i></a>
+      <a href="{% url 'neighborhood' neighborhood.id %}" class="btn-floating" style="background-color:#6eeeb2!important;"><i class="material-icons">check</i></a>
       <h4 class="center-align"><i class="material-icons">home</i>{{neighborhood.neighborhood_name}}</h4>
     </div>
     {% endfor %}

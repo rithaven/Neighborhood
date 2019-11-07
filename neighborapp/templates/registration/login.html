@@ -1,31 +1,48 @@
-
-{% extends 'base.html' %}
+{%extends "registration/base.html"%}
 {% load bootstrap4 %}
-
 {%block content %}
-<div class="container">
-  <div class="row">
-    <div class="col l3 xl3"></div>
-    <div class="col s12 m12 l6 xl6">
-      {% if form.errors %}
-      <div class="card-panel red darken-2 white-text">Password or email is Incorrect</div>
-      {% endif %}
-      <div class="card #ee6e73 darken-1">
-        <div class="card-content">
-          <span class="card-title center-align">Sign In To Neighborhood</span>
-        </div>
-        <div class="card-content">
-          <form action="/accounts/login/" method="POST">
-            {% csrf_token %}
-            {% bootstrap_form form%}
-            <button class="btn" style="background-color:#ee6e73;" type="submit" name="action">Sign In</button>
-            <input type="hidden" name="next" value="/">
-          </form>
-          <p class="center-align">Don't have an account? <a href="/accounts/register/">Sign Up</a></p>
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body style="background-color:#379683">
+    <strong><p style="text-align:center;font-size: 40px;margin-top: 40px;color:
+        white;">Welcome to Neighborhood!!</strong></p>
+    <div class="container" style="box-shadow: 5px 10px white;border: 1px
+      solid;margin-top: 8%;width: 700px;height: 600px;">
+
+
+      <div class="container" style="margin-top: 8%;width: 700px;height: 600px;">
+        <!-- <div class="row"></div> -->
+          <div class="col l4 xl4">
+          <div class="col s12 m12 l6 xl6">
+            {% if form.errors %}
+            <div class="card-panel red darken-2 white-text">Password or email is
+              Incorrect</div>
+            {% endif %}
+            <div class="card #ee6e73 darken-1">
+              <div class="card-content">
+                <span class="card-title center-align" style="margin-left:20px">Sign In To Neighborhood</span>
+              </div>
+              <div class="card-content"style="padding: 20px;width: 500px">
+                <form action="/accounts/login/" method="POST">
+                  {% csrf_token %}
+                  {% bootstrap_form form%}
+                  <button class="btn" style="background-color:#6eeec3;"
+                    type="submit" name="action">Sign In</button>
+                  <input type="hidden" name="next" value="/">
+                </form>
+                <p class="center-align">Don't have an account? <a
+                    href="/accounts/register/">Sign Up</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3 xl3"></div>
         </div>
       </div>
     </div>
-    <div class="col l3 xl3"></div>
-  </div>
-</div>
-{% endblock %}
+    {% endblock %}
+  </body>
+</html>
