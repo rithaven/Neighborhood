@@ -91,31 +91,34 @@ def add_business(request):
    user= User.objects.filter(id=request.user.id).first()
    profile= UserProfile.objects.filter(user=user).first()
    if request.method== 'POST':
-     business_form=AddBusinessForm(request.POST)
-     if business_form.is_valid():
-         business=Business(name= request.POST['name'],BusinessOwner=user,b_neighborhood= profile.neighborhood,email=request.POST['email'])
-         business.save()
-     return redirect(reverse('profile',args=[user.id]))
+        business_form=AddBusinessForm(request.POST)
+        if business_form.is_valid():
+            business=Business(name= request.POST['name'],BusinessOwner=user,b_neighborhood= profile.neighborhood,email=request.POST['email'])
+            business.save()
+        return redirect(reverse('profile',args=[user.id]))
    else:
         business_form=AddBusinessForm()
    return render(request,'biziness.html',{'business_form':business_form})
    
 
 def change_neighborhood(request,neighborhood_id):
-  profile= UserProfile.objects.filter(user=request.user).first()
-  neighborhood = Neighborhood.objects.get(id=neighborhood_id)
-  profile.neighborhood=neighborhood
-  profile.save()
-  return redirect(reverse('neighborhood',args=[neighborhood.id]))
+    profile= UserProfile.objects.filter(user=request.user).first()
+    neighborhood = Neighborhood.objects.get(id=neighborhood_id)
+    profile.neighborhood=neighborhood
+    profile.save()
+    
+    return redirect(reverse('neighborhood',args=[neighborhood.id]))
 
 
 def search(request):
     try:
-      if 'business' in request.GET and request.GET ['business']:
-        search_term = request.GET.get('business')
-        searched_business = Business.objects.get(name_icontains=search_term)
-        return rende(request,'search.html',{'searched_business':searched_business})
-    except (valueError,Business.DoesnotExist):
+        if 'business' in request.GET and request.GET ['business']:
+            search_term = request.GET.get('business')
+            searched_business = Business.objects.get(name__icontains=search_term)
+            return rende(request,'search.html',{'searched_business':searched_business})
+
+    except (ValueError,Business.DoesNotExist):
+
         message= "we couldn't find the business you're looking for!"
         return render(request,'search.html',{'message':message})
     return render(request,'search.html',{'message':message,'searched_business':searched_business})
