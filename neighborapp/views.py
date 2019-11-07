@@ -113,9 +113,9 @@ def search(request):
     try:
       if 'business' in request.GET and request.GET ['business']:
         search_term = request.GET.get('business')
-        searched_business = business.objects.get(name_icontains=search_term)
+        searched_business = Business.objects.get(name_icontains=search_term)
         return rende(request,'search.html',{'searched_business':searched_business})
     except (valueError,Business.DoesnotExist):
         message= "we couldn't find the business you're looking for!"
         return render(request,'search.html',{'message':message})
-    return render(request,'search.html',{'message':message,'searched_business': searched_business})
+    return render(request,'search.html',{'message':message,'searched_business':searched_business})
