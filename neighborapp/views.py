@@ -58,13 +58,14 @@ def neighborhood(request, neighborhood_id):
         if request.method == "POST":
             form = PostForm(request.POST)
             if form.is_valid():
-                post = Post(title=request.POST['title'],post_description=request.POST['post_description'],posted_by=request.user,post_hood=neighborhood,posted_on=datetime.datetime.now())
+                post = Post(title=request.POST['title'],description=request.POST['description'],posted_by=request.user,neighbors=neighbors,postDate=datetime.datetime.now())
                 post.save()
                 return redirect(reverse('neighborhood',args=[neighborhood.id]))
-            else:
-                 form=PostForm()
-            posts= Post.objects.filter(post_hood= neighborhood).all()
-            return render(request,'neighborhood.html',{'posts':posts,'form':form,'user':user,'businesses':businesses,'neighborhood':neighborhood,'emergencies':emergencies})
+        else:
+            form=PostForm()
+
+        posts= Post.objects.filter(post_hood= neighborhood).all()
+        return render(request,'neighborhood.html',{'posts':posts,'form':form,'user':user,'businesses':businesses,'neighborhood':neighborhood,'emergencies':emergencies})
 
 def profile(request,user_id):
     user = User.objects.get(id= user_id)
@@ -96,7 +97,7 @@ def add_business(request):
         return redirect(reverse('profile',args=[user.id]))
     else:
         business_form = AddBusinessForm()
-    return render(request,'biz.html',{'business_form':business_form})
+    return render(request,'biziness.html',{'business_form':business_form})
    
 
 def change_neighborhood(request,neighborhood_id):
