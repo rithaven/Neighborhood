@@ -4,9 +4,9 @@ from .models import UserProfile,Business,Post,Neighborhood,Contacts
 # Create your tests here.
 class UserProfileTestClass(TestCase):
     def setUp(self):
-        self.new_user = User.objects.create_user(username='user',password='user-password')
-        self.new_profile = UserProfile(id=1,first_name='Firstname',last_name='Lastname',user=self.new_user,location='Test Location')
-        self.new_neighborhood = Neighborhood(id=1,neighborhood_name='Test Neighborhood')
+        self.new_user = User.objects.create_user(username='wecode',password='moxx')
+        self.new_profile = UserProfile(id=1,first_name='ritha',last_name='kuku',user=self.new_user,location='kimironko')
+        self.new_neighborhood = Neighborhood(id=1,neighborhood_name='Beza')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_profile,UserProfile))
@@ -33,7 +33,7 @@ class UserProfileTestClass(TestCase):
 
 class NeighborhoodTestClass(TestCase):
     def setUp(self):
-        self.new_neighborhood = Neighborhood(id=1,neighborhood_name='Test Neighborhood')
+        self.new_neighborhood = Neighborhood(id=1,neighborhood_name='Beza')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_neighborhood,Neighborhood))
@@ -51,21 +51,21 @@ class NeighborhoodTestClass(TestCase):
     def test_find_neighborhood(self):
         self.new_neighborhood.Create_neighborhood()
         neighborhood = Neighborhood.find_neighborhood(1)
-        self.assertEqual(neighborhood.neighborhood_name,'Test Neighborhood')
+        self.assertEqual(neighborhood.neighborhood_name,'Beza')
 
     def test_update_neighborhood(self):
         self.new_neighborhood.Create_neighborhood()
         neighborhood = Neighborhood.find_neighborhood(1)
-        neighborhood.neighborhood_name = 'Another Neighborhood'
-        self.assertEqual(neighborhood.neighborhood_name,'Another Neighborhood')
+        neighborhood.neighborhood_name = 'Kabosi'
+        self.assertEqual(neighborhood.neighborhood_name,'Kabosi')
 
 
 class BusinessTestClass(TestCase):
     def setUp(self):
-        self.new_user = User.objects.create_user(username='user',password='user-password')
-        self.new_neighborhood = Neighborhood(id=1,neighborhood_name='Test Neighborhood')
+        self.new_user = User.objects.create_user(username='wecode',password='moxx')
+        self.new_neighborhood = Neighborhood(id=1,neighborhood_name='Beza')
         self.new_neighborhood.save()
-        self.new_business = Business(id = 1,name='Test Business',BusinessOwner=self.new_user,B_location='Test Location',b_neighborhood=self.new_neighborhood,email='business@email.com')
+        self.new_business = Business(id = 1,name='me2you',BusinessOwner=self.new_user,B_location='kimironko',b_neighborhood=self.new_neighborhood,email='ME@email.com')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_business,Business))
@@ -83,10 +83,10 @@ class BusinessTestClass(TestCase):
     def test_find_business(self):
         self.new_business.create_business()
         business = Business.find_business(1)
-        self.assertEqual(business.name,'Test Business')
+        self.assertEqual(business.name,'me2you')
 
     def test_update_business(self):
         self.new_business.create_business()
         business = Business.find_business(1)
-        business.update_business('Another Business')
-        self.assertEqual(business.name,'Another Business')
+        business.update_business('resto')
+        self.assertEqual(business.name,'resto')
