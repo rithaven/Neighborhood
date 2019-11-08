@@ -91,8 +91,8 @@ def add_business(request):
     if request.method == 'POST':
         business_form = AddBusinessForm(request.POST)
         if business_form.is_valid():
-            business = Business(name = request.POST['name'],BusinessOwner = user,b_neighborhood=profile.neighborhood,email=request.POST['email'])
-            business.save()
+            business = Business(name = request.POST['name'],BusinessOwner = user,B_location =user,b_neighborhood=profile.neighborhood,email=request.POST['email'])
+            
         return redirect(reverse('profile',args=[user.id]))
     else:
         business_form = AddBusinessForm()
