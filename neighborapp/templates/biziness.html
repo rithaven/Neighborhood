@@ -11,9 +11,8 @@
       <div class="card-content">
         <form action="{% url 'add_business' %}" method="POST">
           {% csrf_token %}
-          {% bootstrap_form business_form %}
-          <button class="btn" style="background-color:#6eeebd;" type="submit"n ame="action">Add</button>
-            
+            {% bootstrap_form business_form%}
+          <button class="btn" style="background-color:#6eeebd;" type="submit" ame="action">Add</button>
         </form>
       </div>
     </div>

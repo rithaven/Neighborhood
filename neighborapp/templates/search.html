@@ -10,16 +10,17 @@
       <div class="card-content">
         <h4 class="center-align">{{searched_business%</h4>
           <ul>
-            <li><h6>Owner:{{ searched_business.owner.username}}</h6></li>
+            <li><h6>Owner:{{ searched_business.BusinessOwner.username}}</h6></li>
             <li><h6>Email:{{searched_business.email}}</h6></li>
-            <li><h6>Located At: {{searched_business.b_location}}</h6></li>
+            <li><h6>Located At: {{searched_business.B_location}}</h6></li>
             <li><h6>Neighborhood:{{searched_business.b_neighborhood}}</h6></li>
           </ul>
       </div>
     </div>
   </div>
+  {%else%}
   <div class="col s3 m3 14 x14"></div>
-  <h4 class="center-align"><i style="font-size:100px;" class="material-icons">very_dissatisfied</i></h4>
+  <h4 class="center-align"><i style="font-size:80px;">Oooooooh!!</i></h4>
   <h3 class="center-align">{{message}}</h3>
   {% endif %}
 

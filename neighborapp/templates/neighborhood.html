@@ -11,16 +11,16 @@
     <div class="col s12 m12 l6 xl6">
       <div class="card">
         <div class="card-content">
-          <h4 class="card-title center-align">Members</h4>
+          <h4 class="card-title center-align">Patners</h4>
           <div class="divider"></div>
-          {% if members %}
+          {% if partners %}
           <ul>
-            {% for member in members %}
+            {% for member in partners %}
             <li>{{member.user.username}}{% if member.location %} &mdash; {{member.location}}{% endif %}</li>
             {% endfor %}
           </ul>
           {% else %}
-          <h5 class="center-align">No members yet</h5>
+          <h5 class="center-align">No partners yet</h5>
           {% endif %}
         </div>
       </div>
@@ -75,7 +75,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <a class="modal-close btn-flat" style="color:#ee6e73;">Close</a>
+        <a class="modal-close btn-flat" style="color:#6eeed9;">Close</a>
       </div>
     </div>
 
@@ -86,7 +86,7 @@
           <div class="card-content">
             <div class="section">
               <h5 class="card-title center-align">Alerts and Meetings</h5>
-              <a href="#modal3" data-target="modal3" class="modal-trigger btn-floating" style="background-color:#ee6e73!important;"><i class="material-icons">add</i></a>
+              <a href="#modal3" data-target="modal3" class="modal-trigger btn-floating" style="background-color:#6ecaee!important;"><i class="material-icons">add</i></a>
             </div>
 
             <!-- Post Form Modal -->
@@ -108,9 +108,9 @@
             <div class="section">
               <h6 class="center-align">{{post.title}}</h6>
               {% autoescape on %}
-              <p class="center-align">{{post.post_description | safe}}</p>
+              <p class="center-align">{{post.description | safe}}</p>
               {% endautoescape %}
-              <p><strong>Posted on {{post.posted_on|date:'D,d M,Y'}} by {% if post.posted_by == request.user %}me{% else %}{{post.posted_by.username}}{% endif %}</strong></p>
+              <p><strong>Posted on {{post.postDate|date:'D,d M,Y'}} by {% if post.posted_by == request.user %}me{% else %}{{post.posted_by.username}}{% endif %}</strong></p>
             </div>
             <div class="divider"></div>
             {% endfor %}
@@ -132,7 +132,7 @@
                   <li>
                     <h6>{{business.name}}</h6>
                   </li>
-                  <li>Located At: {{business.business_location}}</li>
+                  <li>Located At: {{business.B_location}}</li>
                   <li>Business email: {{business.email}}</li>
                 </ul>
               </li>
@@ -147,5 +147,4 @@
     </div>
   </div>
   {% endif %}
-
   {% endblock %}

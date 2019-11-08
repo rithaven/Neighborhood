@@ -11,11 +11,14 @@ class UpdateProfileForm(ModelForm):
      class Meta:
           model = UserProfile
           fields= ('first_name','last_name','location')
-class PostForm(ModelForm):
-      class Meta:
-           model =Post
-           fields= ('title','description',)
+
+
 class AddBusinessForm(ModelForm):
       class Meta:
             model = Business
             fields= ('name','email', 'B_location')
+class PostForm(ModelForm):
+      class Meta:
+           model =Post
+           fields= ('title','description',)
+
